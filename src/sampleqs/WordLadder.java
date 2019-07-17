@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class WordLadder {
 
+	//https://leetcode.com/problems/word-ladder/solution/
 	public static void main(String[] args) {
 		String start = "hit";
 		String end = "cog";
@@ -21,11 +22,15 @@ public class WordLadder {
 		ladder.add(start);
 		
 		boolean isSame = start.equals(end);
-		do {
-			String select = findNextStep(ladder, dict, end);
-			ladder.add(select);
-			isSame = select.equals(end);
-		} while(!isSame);
+		if(isSame)
+            ladder.clear();
+        else {
+        	do {
+    			String select = findNextStep(ladder, dict, end);
+    			ladder.add(select);
+    			isSame = select.equals(end);
+    		} while(!isSame);
+        }
 		
 		
 		System.out.println("\n");
