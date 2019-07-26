@@ -1,6 +1,7 @@
 package sampleqs;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class BootstrapPrimeCompositeMatrix {
@@ -58,6 +59,8 @@ public class BootstrapPrimeCompositeMatrix {
 		}
 	}
 	
+	private static ArrayList<Integer> arrPrimes = new ArrayList<>();
+	private static ArrayList<Integer> arrComposite = new ArrayList<>();
 	private static void findGangs(int m, int n, int[][] matrix) {
 		int i = 0;
 		int j = 0;
@@ -65,7 +68,15 @@ public class BootstrapPrimeCompositeMatrix {
 		int composite = 0;
 		while(arrPos.size() < (n * m)) {
 			if(!arrPos.contains(i + DELIMITER + j)) {
-				boolean isPrime = checkPrime(matrix[i][j], matrix[i][j] / 2);
+				boolean isPrime = false;
+				if (arrPrimes.contains(matrix[i][j]))  isPrime = true;
+				else if(arrComposite.contains(matrix[i][j])) isPrime = false;
+				else {
+					isPrime = checkPrime(matrix[i][j], matrix[i][j] / 2);
+					if(isPrime) arrPrimes.add(matrix[i][j]);
+					else arrComposite.add(matrix[i][j]);
+				}
+				
 				findAdjacent(m, n, i, j, matrix, isPrime);
 				
 				if(isPrime) prime++;
