@@ -67,13 +67,11 @@ public class BootstrapPrimeCompositeMatrix {
 			if(!arrPos.contains(i + DELIMITER + j)) {
 				boolean isPrime = checkPrime(matrix[i][j], matrix[i][j] / 2);
 				findAdjacent(m, n, i, j, matrix, isPrime);
-				if(isPrime)
-					prime++;
-				else
-					composite++;
+				
+				if(isPrime) prime++;
+				else composite++;
 			}
-			if((j + 1) < n)
-				j++;
+			if((j + 1) < n) j++;
 			else if((i + 1) < m) {
 				i++;
 				j = 0;
