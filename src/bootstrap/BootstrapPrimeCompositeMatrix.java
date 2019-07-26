@@ -1,4 +1,4 @@
-package sampleqs;
+package bootstrap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +9,8 @@ public class BootstrapPrimeCompositeMatrix {
 	private final static String DELIMITER = "_";
 	static int globalPrime = 0;
 	static int globalComposite = 0;
+	private static ArrayList<Integer> arrPrimes = new ArrayList<>();
+	private static ArrayList<Integer> arrComposite = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		
@@ -35,6 +37,9 @@ public class BootstrapPrimeCompositeMatrix {
 //			checkTestCase(m, n, matrix);
 		}
 		
+		System.out.println(arrPrimes);
+		System.out.println(arrComposite);
+		
 //		int test = 101;
 //		System.out.println(checkPrime(test, test/2) + " " + checkPrimeOld(test, test / 2));
 	}
@@ -59,8 +64,6 @@ public class BootstrapPrimeCompositeMatrix {
 		}
 	}
 	
-	private static ArrayList<Integer> arrPrimes = new ArrayList<>();
-	private static ArrayList<Integer> arrComposite = new ArrayList<>();
 	private static void findGangs(int m, int n, int[][] matrix) {
 		int i = 0;
 		int j = 0;

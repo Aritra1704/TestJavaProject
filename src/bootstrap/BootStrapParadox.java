@@ -1,4 +1,4 @@
-package sampleqs;
+package bootstrap;
 
 import java.util.ArrayList;
 import java.util.Scanner;
