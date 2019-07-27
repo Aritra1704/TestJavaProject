@@ -28,17 +28,11 @@ public class BootstrapPrimeCompositeMatrix {
 			}
 			arrPos.clear();
 			
-//			boolean isPrime = checkPrime(matrix[0][0], matrix[0][0] / 2);
-//			arrPos.add(0 + DELIMITER + 0);
-//			findNewAdjacent(m, n, 0, 0, matrix, isPrime);
-//			System.out.println(globalPrime + " " + globalComposite);
-//			globalPrime = globalComposite = 0;
-			findGangs(m, n, matrix);
-//			checkTestCase(m, n, matrix);
+			findGangs(m, n, matrix);	
 		}
 		
-		System.out.println(arrPrimes);
-		System.out.println(arrComposite);
+//		System.out.println(arrPrimes);
+//		System.out.println(arrComposite);
 		
 //		int test = 101;
 //		System.out.println(checkPrime(test, test/2) + " " + checkPrimeOld(test, test / 2));
@@ -69,6 +63,8 @@ public class BootstrapPrimeCompositeMatrix {
 		int j = 0;
 		int prime = 0;
 		int composite = 0;
+		arrPrimes.clear();
+		arrComposite.clear();
 		while(arrPos.size() < (n * m)) {
 			if(!arrPos.contains(i + DELIMITER + j)) {
 				boolean isPrime = false;
@@ -93,25 +89,6 @@ public class BootstrapPrimeCompositeMatrix {
 		}
 		System.out.println(prime + " " + composite);
 	}
-	
-	private static void checkTestCase(int m, int n, int[][] matrix) {
-		int prime = 0;
-		int composite = 0;
-		for(int i = 0; i < matrix.length; i++) {
-			for(int j = 0; j < matrix[i].length; j++) {
-				if(arrPos.contains(i + DELIMITER + j))
-					continue;
-				
-				boolean isPrime = checkPrime(matrix[i][j], matrix[i][j] / 2);
-				findAdjacent(m, n, i, j, matrix, isPrime);
-				if(isPrime)
-					prime++;
-				else
-					composite++;
-			}
-		}
-		System.out.println(prime + " " + composite);
-	}
 
 	public static boolean checkPrime(int input, int divisor) {
 		if(input < 2) return false;
@@ -122,15 +99,34 @@ public class BootstrapPrimeCompositeMatrix {
 		return checkPrime(input, divisor - 1);
 	}
 	
-	public static boolean checkPrimeOld(int input, int divisor) {
-		if(input == 2 || input == 3)
-			return true;
-		if(input % divisor == 0)
-			return false;
-		if(divisor <= 2)
-			return true;
-		return checkPrime(input, divisor - 1);
-	}
+//	public static boolean checkPrimeOld(int input, int divisor) {
+//		if(input == 2 || input == 3)
+//			return true;
+//		if(input % divisor == 0)
+//			return false;
+//		if(divisor <= 2)
+//			return true;
+//		return checkPrime(input, divisor - 1);
+//	}
+	
+//	private static void checkTestCase(int m, int n, int[][] matrix) {
+//		int prime = 0;
+//		int composite = 0;
+//		for(int i = 0; i < matrix.length; i++) {
+//			for(int j = 0; j < matrix[i].length; j++) {
+//				if(arrPos.contains(i + DELIMITER + j))
+//					continue;
+//				
+//				boolean isPrime = checkPrime(matrix[i][j], matrix[i][j] / 2);
+//				findAdjacent(m, n, i, j, matrix, isPrime);
+//				if(isPrime)
+//					prime++;
+//				else
+//					composite++;
+//			}
+//		}
+//		System.out.println(prime + " " + composite);
+//	}
 	
 //	private static void findNewAdjacent(int m, int n, int i, int j, int[][] matrix, boolean isPrime) {
 //		if(arrPos.size() >= m * n) return;
