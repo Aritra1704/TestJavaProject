@@ -9,22 +9,22 @@ public class BInaryMadness {
 		Scanner s = new Scanner(System.in);
 		int t = s.nextInt();
 		for(int k = 0 ; k < t; k++) {
-			BigInteger i = s.nextBigInteger();
-			faS(fB(i));
+			faS(fB(s.nextBigInteger()));
 		}
 	}
 	private static void faS(String b) {
 		int cZ = 0; int cO = 0;
-		ArrayList<String> aSS = new ArrayList<String>();
-		for (int i = 0; i < b.length(); i++) {
-			for (int j = i+1; j <= b.length(); j++) {
-				aSS.add(b.substring(i,j));
+		int k = 0; int l = k+1;
+		while(k < b.length()) {
+			if(l<=b.length()) {
+				int[] c = oN(b.substring(k,l));
+				if(c[0] % 2 != 0) cZ++;
+				if(c[1] % 2 != 0) cO++;
+				l++;
+			} else {
+				k++;
+				l=k+1;
 			}
-		}
-		for(String s : aSS) {
-			int[] c = oN(s);
-			if(c[0] % 2 != 0) cZ++;
-			if(c[1] % 2 != 0) cO++;
 		}
 		System.out.println(cZ + " " + cO);
 	}
