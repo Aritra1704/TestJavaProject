@@ -5,18 +5,49 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BInaryMadness {
-
 	public static void main(String[] args) {
-		
-		Scanner scanner = new Scanner(System.in);
-		int testcase = scanner.nextInt();
-		for(int k = 0 ; k < testcase; k++) {
-			BigInteger input = scanner.nextBigInteger();
-			String binary = findBinary(input);
-//			System.out.println(binary);
-			
-			findAllSubstring2(binary);
+		Scanner s = new Scanner(System.in);
+		int t = s.nextInt();
+		for(int k = 0 ; k < t; k++) {
+			BigInteger i = s.nextBigInteger();
+			faS(fB(i));
 		}
+	}
+	private static void faS(String b) {
+		int cZ = 0; int cO = 0;
+		ArrayList<String> aSS = new ArrayList<String>();
+		for (int i = 0; i < b.length(); i++) {
+			for (int j = i+1; j <= b.length(); j++) {
+				aSS.add(b.substring(i,j));
+			}
+		}
+		for(String s : aSS) {
+			int[] c = oN(s);
+			if(c[0] % 2 != 0) cZ++;
+			if(c[1] % 2 != 0) cO++;
+		}
+		System.out.println(cZ + " " + cO);
+	}
+	private static int[] oN(String ss) {
+		int cZ = 0; int cO = 0;
+		for(int i = 0; i < ss.length(); i++) {
+			if(ss.charAt(i) == '0') cZ++;
+			if(ss.charAt(i) == '1') cO++;
+		}
+		return new int[] {cZ, cO};
+	}
+	private static String fB(BigInteger input) {
+		StringBuilder sB = new StringBuilder();
+		BigInteger bI = input, bZ, bB;
+		bZ = new BigInteger("0");
+		bB = new BigInteger("2");
+		int a = 0;
+		if(bI.equals(bZ)) sB.append("0");
+		while(bI.compareTo(bZ) > 0) {
+			sB.append(bI.mod(bB));
+			bI = bI.divide(bB);
+        }
+		return sB.toString();
 	}
 	
 	private static void findAllSubstring(String binary) {
@@ -27,7 +58,7 @@ public class BInaryMadness {
 			for (int j = i+1; j <= binary.length(); j++) {
 				String sub = binary.substring(i,j);
 				
-				int[] count = oddNums(sub);
+				int[] count = oN(sub);
 				if(count[0] % 2 != 0) 
 					countZeroSet++;
 				if(count[1] % 2 != 0) 
@@ -36,60 +67,6 @@ public class BInaryMadness {
 		}
 		
 		System.out.println(countZeroSet + " " + countOneSet);
-	}
-	
-	private static void findAllSubstring2(String binary) {
-
-		int countZeroSet = 0;
-		int countOneSet = 0;
-		ArrayList<String> arrSubString = new ArrayList<String>();
-		for (int i = 0; i < binary.length(); i++) {
-			for (int j = i+1; j <= binary.length(); j++) {
-				String sub = binary.substring(i,j);
-				arrSubString.add(sub);
-			}
-		}
-		for(String sub : arrSubString) {
-			int[] count = oddNums(sub);
-			if(count[0] % 2 != 0) 
-				countZeroSet++;
-			if(count[1] % 2 != 0) 
-				countOneSet++;
-		}
-		
-		System.out.println(countZeroSet + " " + countOneSet);
-	}
-	
-	private static int[] oddNums(String substring) {
-		int countZero = 0;
-		int countOne = 0;
-		for(int i = 0; i < substring.length(); i++) {
-			if(substring.charAt(i) == '0')
-				countZero++;
-			if(substring.charAt(i) == '1')
-				countOne++;
-		}
-		
-		int[] counts = new int[] {countZero, countOne};
-		return counts;
-	}
-	
-	private static String findBinary(BigInteger input) {
-		
-		StringBuilder strBuilder = new StringBuilder();
-		BigInteger bigInput = input;
-		BigInteger bigZero = new BigInteger("0");
-		BigInteger bigBinary = new BigInteger("2");
-		
-		int a = 0;
-		if(bigInput.equals(bigZero))
-			strBuilder.append("0");
-
-		while(bigInput.compareTo(bigZero) > 0) {
-			strBuilder.append(bigInput.mod(bigBinary));
-			bigInput = bigInput.divide(bigBinary);
-        }
-		return strBuilder.toString();
 	}
 	
 	private static int findMod(String num, int modBy) {
