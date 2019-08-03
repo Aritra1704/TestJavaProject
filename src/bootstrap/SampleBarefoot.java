@@ -4,31 +4,61 @@ public class SampleBarefoot {
 
 	public static void main(String[] args) {
 		
-		double startLat = 12.870531;
-		double startLng = 77.766701;
+		double startLat = 12.999531;
+		double startLng = 77.600701;
 		
-		double rightLat = 12.870531;
-		double rightLng = 77.810222;
+		double rightLat = 12.817937;
+		double rightLng = 77.890222;
 		
-		double bottomLat = 12.837937;
+		double bottomLat = 12.817937;
 		
-		double horizontal = distance(startLat, rightLat, startLng, rightLng, 0, 0);
-		double vertical = distance(12.870531, 12.837937, 77.766701,  77.768419, 0, 0);
+		double vertical = distance(startLat, startLat, startLng, rightLng, 0, 0);
+		double horizontal = distance(startLat, bottomLat, startLng,  startLng, 0, 0);
 		
-		int matrixWidth = 100;
+		
+		int matrixWidth = 500;
 		horizontal = horizontal / matrixWidth;
 		vertical = vertical / matrixWidth;
 		
-		System.out.println(horizontal);
-		System.out.println(vertical);
+//		System.out.println(horizontal);
+//		System.out.println(vertical);
 		
-		double[][] values = new double[(int)horizontal / 100][(int)vertical / 100];
-		for(int i = 0; i < horizontal; i++) {
-			for(int j = 0; j < vertical; j++) {
-				System.out.println((startLat + ((bottomLat - startLat) / vertical) * i) + ", " + 
-						(startLng + ((rightLng - startLng) / horizontal) * j));
+		double[][] lat1 = new double[(int)horizontal][(int)vertical];
+		double[][] lat2 = new double[(int)horizontal][(int)vertical];
+		double[][] lat3 = new double[(int)horizontal][(int)vertical];
+		double[][] lat4 = new double[(int)horizontal][(int)vertical];
+		
+		double[][] lng1 = new double[(int)horizontal][(int)vertical];
+		double[][] lng2 = new double[(int)horizontal][(int)vertical];
+		double[][] lng3 = new double[(int)horizontal][(int)vertical];
+		double[][] lng4 = new double[(int)horizontal][(int)vertical];
+		
+		for(int i = 0; i < (int)horizontal; i++) {
+			for(int j = 0; j < (int)vertical; j++) {
+				lat1[i][j] = (startLat + ((bottomLat - startLat) / vertical) * i);
+				lat2[i][j] = (startLat + ((bottomLat - startLat) / vertical) * i);
+				lat3[i][j] = (startLat + ((bottomLat - startLat) / vertical) * (i + 1));
+				lat4[i][j] = (startLat + ((bottomLat - startLat) / vertical) * (i + 1));
+				
+				lng1[i][j] = (startLng + ((rightLng - startLng) / horizontal) * j);
+				lng2[i][j] = (startLng + ((rightLng - startLng) / horizontal) * (j + 1));
+				lng3[i][j] = (startLng + ((rightLng - startLng) / horizontal) * j);
+				lng4[i][j] = (startLng + ((rightLng - startLng) / horizontal) * (j + 1));
+//				System.out.println((startLat + ((bottomLat - startLat) / vertical) * i) + ", " + 
+//						(startLng + ((rightLng - startLng) / horizontal) * j));// + " " + j
 			}
 		}
+		
+		for(int i = 0; i < (int)horizontal; i++) {
+			for(int j = 0; j < (int)vertical; j++) {
+				System.out.println(lat1[i][j] + ", " + lng1[i][j]);
+				System.out.println(lat2[i][j] + ", " + lng2[i][j]);
+				System.out.println(lat3[i][j] + ", " + lng3[i][j]);
+				System.out.println(lat4[i][j] + ", " + lng4[i][j]);
+			}
+			System.out.println("---------------------");
+		}
+		
 
 	}
 
