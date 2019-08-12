@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.math.*;
 
+//https://www.spoj.com/problems/PRIME1/
 public class PrimeGenerator {
 
 	static BigInteger big0, big1, big2, big3, big5, big7; 
@@ -43,7 +44,8 @@ public class PrimeGenerator {
 	}
 
 	static boolean isPrime(BigInteger input) {
-		BigInteger divisor = new BigInteger("" +  Math.abs(Math.sqrt(input.longValue())));//input.  sqrt();
+//		BigInteger divisor = new BigInteger("" +  Math.abs(Math.sqrt(input.longValue())));//input.  sqrt();
+		BigInteger divisor = input.divide(big2);
 		return checkPrime(input, divisor);
 	}
 	
