@@ -1,9 +1,10 @@
 package sampleqs;
 
+
 import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.math.*;
+
 
 //https://www.spoj.com/problems/PRIME1/
 public class PrimeGenerator {
@@ -31,6 +32,7 @@ public class PrimeGenerator {
 //		while(itr.hasNext()){
 //			  System.out.println(itr.next());
 //		}
+        
 	}
 	
 	static void addPrimes(int highest, int lowest) {
