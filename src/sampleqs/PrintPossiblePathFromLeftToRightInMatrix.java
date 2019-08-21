@@ -19,7 +19,6 @@ public class PrintPossiblePathFromLeftToRightInMatrix {
                         { 7, 8, 9 }}; 
         int maxLengthOfPath = m + n - 1; 
         printMatrix(mat, m, n, 0, 0, new int[maxLengthOfPath], 0); 
-
 	}
 
 	
