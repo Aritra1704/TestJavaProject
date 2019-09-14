@@ -1,4 +1,4 @@
-package practice;
+package sampleqs;
 
 import java.util.ArrayList;
 import java.util.Collections;
