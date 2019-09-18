@@ -89,7 +89,6 @@ public class printNodesDFS {
 	
 	static void printNodesBFS(Node node) {
 		if(node != null) {
-//			System.out.println(node.getValue());
 			int height = calculateHeight(node);
 			System.out.println("Height: " + height);
 			for(int i = 1; i <= height; i++) {
