@@ -7,6 +7,7 @@ public class AdjacencyGraph {
 	
 	// https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
 	// https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
+	// https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
 	private static int V;
 	private static LinkedList<Integer> adjacencyGraph[];
 	AdjacencyGraph(int V) {
@@ -73,8 +74,7 @@ public class AdjacencyGraph {
   
         // Recur for all the vertices adjacent to this vertex 
         Iterator<Integer> i = adjacencyGraph[v].listIterator(); 
-        while (i.hasNext()) 
-        { 
+        while (i.hasNext()) { 
             int n = i.next(); 
             if (!visited[n]) 
                 DFSUtil(n, visited); 
