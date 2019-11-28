@@ -21,7 +21,7 @@ public class SampleBarefoot {
 		double vert = distance(startLat, bottomLat, startLng,  startLng, 0, 0);
 		
 		
-		int matrixWidth = 500;
+		int matrixWidth = 100;
 		vert = Math.ceil(vert / matrixWidth);
 		hori = Math.ceil(hori / matrixWidth);
 		
